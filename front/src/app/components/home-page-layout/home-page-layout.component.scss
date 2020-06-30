@@ -1,0 +1,60 @@
+:host {
+  .header {
+    background-color: var(--color-primary);
+    padding: 15px 10px;
+    min-height: 40px;
+    max-height: 40px;
+    button.user {
+      float: right;
+      align-self: center;
+      margin-right: 15px;
+      margin-left: 20px;
+    }
+    button.add {
+      float: left;
+      align-self: center;
+      background-color: var(--color-success);
+      margin-right: 20px;
+      margin-left: 15px;
+    }
+    .lists {
+      align-self: center;
+    }
+  }
+  //to all the component
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #f6f7fd;
+  min-width: 40vw;
+
+  #seccion1 {
+    height: 100%;
+    position: relative;
+
+    #container {
+      width: 80%;
+      margin: auto;
+      margin-top: 0;
+      position: absolute;
+      top: 100px;
+      left: 0px;
+      right: 0px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+
+      #content {
+        margin-top: 20px;
+        min-width: 60vw;
+
+        mat-card {
+          padding-top: 0px;
+          min-height: 150px;
+        }
+      }
+    }
+  }
+}
+//

@@ -1,0 +1,27 @@
+<div class="title">
+  <h2 class="primary">Eliminar {{ data }}</h2>
+</div>
+<div>
+  <div class="message">
+    <p>Esta seguro que desea eliminar esta {{ data | lowercase }}?</p>
+  </div>
+  <div class="btn-sec">
+    <button
+      mat-raised-button
+      class="Update-btn"
+      type="submit"
+      color="warn"
+      (click)="deleteModel()"
+    >
+      Eliminar
+    </button>
+    <button
+      mat-raised-button
+      type="button"
+      class=".Discard-btn"
+      (click)="close()"
+    >
+      Cancelar
+    </button>
+  </div>
+</div>

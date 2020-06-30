@@ -1,0 +1,22 @@
+:host {
+  min-width: 40vw;
+  max-width: 400px;
+  min-height: 130px;
+  margin: 0 auto;
+  border-radius: 10px;
+
+  .mat-form-field {
+    margin-top: 1em;
+    width: 100%;
+  }
+  .btn-sec {
+    margin-top: 1em;
+    text-align: right;
+  }
+  .Update-btn {
+    margin: 5px;
+  }
+  .Discard-btn {
+    margin: 5px;
+  }
+}

@@ -1,0 +1,43 @@
+<div class="title">
+  <h2 class="primary">{{ formTitle }}</h2>
+</div>
+<div>
+  <form>
+    <div class="text-inside">
+      <mat-form-field appearance="fill">
+        <mat-label>Titulo</mat-label>
+        <input
+          matInput
+          [formControl]="titulo"
+          required
+          minlength="3"
+          maxlength="30"
+          spellcheck="false"
+        />
+        <mat-error *ngIf="titulo.invalid">{{
+          getTituloValidationError()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="btn-sec">
+      <button
+        mat-raised-button
+        class="Update-btn"
+        type="submit"
+        color="primary"
+        [disabled]="titulo.invalid"
+        (click)="data ? editarLista() : agregarLista()"
+      >
+        Guardar
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        class=".Discard-btn"
+        (click)="close()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

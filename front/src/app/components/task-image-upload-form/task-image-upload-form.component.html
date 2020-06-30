@@ -1,0 +1,47 @@
+<div class="title">
+  <h2 class="primary">Agregar Imagen</h2>
+</div>
+<div>
+  <form>
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione una imagen</mat-label>
+      <ngx-mat-file-input
+        #removableInput
+        [formControl]="imagen"
+        required
+        [accept]="'.png,.jpg,.jpeg'"
+      ></ngx-mat-file-input>
+      <mat-error *ngIf="imagen.invalid">{{
+        getImageValidationError()
+      }}</mat-error>
+      <button
+        mat-icon-button
+        matSuffix
+        *ngIf="!removableInput.empty"
+        (click)="removableInput.clear($event)"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="btn-sec">
+      <button
+        mat-raised-button
+        class="Update-btn"
+        type="submit"
+        color="primary"
+        [disabled]="imagen.invalid"
+        (click)="imageUpload()"
+      >
+        Guardar
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        class=".Discard-btn"
+        (click)="close()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

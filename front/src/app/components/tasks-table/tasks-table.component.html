@@ -1,0 +1,111 @@
+<!-- Tabla -->
+<table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+  <!-- Rows -->
+  <ng-container matColumnDef="titulo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</th>
+    <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
+  </ng-container>
+  <ng-container matColumnDef="fechaCreacion">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de Creación</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.fechaCreacion | date }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+    <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+  </ng-container>
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef>
+      Acciones
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="Editar" (click)="onEditTask(element)">
+        <mat-icon style="color: orange; padding-right: 5px;" title="Editar"
+          >edit</mat-icon
+        >
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Subir imagen"
+        title="Agregar imagen"
+        (click)="onUploadTaskImage(element)"
+      >
+        <mat-icon style="color: cornflowerblue;"
+          >add_photo_alternate</mat-icon
+        ></button
+      ><button
+        mat-icon-button
+        aria-label="Borrar"
+        (click)="onDeleteTask(element)"
+      >
+        <mat-icon style="color: red; padding-right: 5px;" title="Eliminar"
+          >delete</mat-icon
+        >
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td
+      mat-cell
+      *matCellDef="let element"
+      [attr.colspan]="columnsToDisplay.length"
+    >
+      <div
+        class="example-element-detail"
+        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+      >
+        <div class="detail-item">
+          <div class="text" style="float: left;">
+            <p *ngIf="element.descripcion">
+              <span class="detail-item-title">Descripcion:</span
+              >{{ element.descripcion }}
+            </p>
+
+            <p>
+              <span class="detail-item-title">Prioridad:</span
+              >{{ element.prioridad }}
+            </p>
+
+            <p *ngIf="element.fechaLimite">
+              <span class="detail-item-title">Fecha Limite:</span
+              >{{ element.fechaLimite | date: "dd-MM-yy" }}
+            </p>
+
+            <p *ngIf="element.fechaResolucion">
+              <span class="detail-item-title">Fecha de Resolucion:</span
+              >{{ element.fechaResolucion | date: "dd-MM-yy" }}
+            </p>
+          </div>
+          <img
+            *ngIf="element.imagen"
+            [src]="
+              'http://localhost:3000/api/listas/' +
+              element.idLista +
+              '/tareas/' +
+              element.id +
+              '/imagen'
+            "
+            alt=""
+          />
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr
+    mat-row
+    *matRowDef="let element; columns: columnsToDisplay"
+    class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element"
+    (click)="expandedElement = expandedElement === element ? null : element"
+  ></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: ['expandedDetail']"
+    class="example-detail-row"
+  ></tr>
+</table>

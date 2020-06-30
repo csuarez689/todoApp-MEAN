@@ -1,0 +1,20 @@
+:host {
+  min-width: 40vw;
+  max-width: 400px;
+  min-height: 130px;
+  margin: 0 auto;
+  border-radius: 10px;
+
+  .btn-sec {
+    margin-top: 1.2em;
+    text-align: right;
+  }
+  .Update-btn {
+    margin: 5px;
+    color: white !important;
+    font-weight: 600;
+  }
+  .Discard-btn {
+    margin: 5px;
+  }
+}

@@ -1,0 +1,108 @@
+<div class="title">
+  <h2 class="primary">{{ formTitle }}</h2>
+</div>
+<div>
+  <form [formGroup]="taskForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Titulo</mat-label>
+      <input
+        matInput
+        formControlName="titulo"
+        required
+        minlength="3"
+        maxlength="30"
+        spellcheck="false"
+      />
+      <mat-error *ngIf="taskForm.controls['titulo'].invalid">{{
+        getTituloValidationError()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <textarea
+        formControlName="descripcion"
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="2"
+        maxlength="150"
+        spellcheck="false"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha Limite</mat-label>
+      <input
+        matInput
+        [min]="minDate"
+        [matDatepicker]="fechaLimite"
+        formControlName="fechaLimite"
+        disabled
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="fechaLimite"
+        disabled="false"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #fechaLimite disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Prioridad</mat-label>
+      <mat-select formControlName="prioridad" required>
+        <mat-option value="Baja">Baja</mat-option>
+        <mat-option value="Media">Media</mat-option>
+        <mat-option value="Alta">Alta</mat-option>
+      </mat-select>
+      <mat-error *ngIf="taskForm.get('prioridad').hasError('required')">
+        La prioridad es obligatoria
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Estado</mat-label>
+      <mat-select formControlName="estado" required>
+        <mat-option value="Pendiente">Pendiente</mat-option>
+        <mat-option value="En Proceso">En Proceso</mat-option>
+        <mat-option value="Terminado">Terminado</mat-option>
+      </mat-select>
+      <mat-error *ngIf="taskForm.get('estado').hasError('required')">
+        El estado es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Listas</mat-label>
+      <mat-select formControlName="idLista">
+        <mat-option *ngFor="let list of data.lists" [value]="list.id">{{
+          list.titulo
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="taskForm.get('idLista').hasError('required')">
+        La lista es obligatoria
+      </mat-error>
+    </mat-form-field>
+
+    <div class="btn-sec">
+      <button
+        mat-raised-button
+        class="Update-btn"
+        type="submit"
+        color="primary"
+        [disabled]="taskForm.invalid"
+        (click)="data.task ? editarTarea() : agregarTarea()"
+      >
+        Guardar
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        class=".Discard-btn"
+        (click)="close()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

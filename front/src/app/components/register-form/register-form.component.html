@@ -1,0 +1,103 @@
+<div class="title">
+  <h2 class="primary">Registro</h2>
+</div>
+<div>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input
+        matInput
+        formControlName="nombre"
+        required
+        minlength="2"
+        maxlength="30"
+        spellcheck="false"
+      />
+      <mat-error *ngIf="form.controls['nombre'].invalid">{{
+        getNombreValidationError()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input
+        matInput
+        formControlName="apellido"
+        required
+        minlength="2"
+        maxlength="30"
+        spellcheck="false"
+      />
+      <mat-error *ngIf="form.controls['apellido'].invalid">{{
+        getApellidoValidationError()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Correo electronico</mat-label>
+      <input matInput formControlName="email" required spellcheck="false" />
+      <mat-error *ngIf="form.controls['email'].invalid">{{
+        getEmailValidationError()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirme su correo electronico</mat-label>
+      <input
+        matInput
+        formControlName="emailConfirmation"
+        autocomplete="false"
+        required
+        spellcheck="false"
+      />
+      <mat-error *ngIf="form.controls['emailConfirmation'].invalid">{{
+        getEmailConfirmationValidationError()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        autocomplete="false"
+        required
+        spellcheck="false"
+      />
+      <mat-error *ngIf="form.controls['password'].invalid">{{
+        getPasswordValidationError()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Confirme su contraseña</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="passwordConfirmation"
+        autocomplete="false"
+        required
+        spellcheck="false"
+      />
+      <mat-error *ngIf="form.controls['passwordConfirmation'].invalid">{{
+        getPasswordConfirmationValidationError()
+      }}</mat-error>
+    </mat-form-field>
+    <div class="btn-sec">
+      <button
+        mat-raised-button
+        class="Update-btn"
+        type="submit"
+        color="primary"
+        [disabled]="form.invalid"
+        (click)="signUp()"
+      >
+        Registrarse
+      </button>
+      <button
+        mat-raised-button
+        type="button"
+        class=".Discard-btn"
+        (click)="close()"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+<div id="seccion1">
+  <div class="header">
+    <button
+      mat-mini-fab
+      color=""
+      class="user"
+      aria-label="Usuario"
+      [matMenuTriggerFor]="userMenu"
+    >
+      <mat-icon>person</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      aria-label="Agregar Lista"
+      class="add"
+      (click)="openNewListForm()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <mat-tab-group
+      class="lists"
+      animationDuration="0ms"
+      backgroundColor="primary"
+      mat-align-tabs="start"
+      (selectedIndexChange)="navigate($event)"
+    >
+      <mat-tab *ngFor="let list of lists" [label]="list.titulo"></mat-tab>
+    </mat-tab-group>
+  </div>
+  <div id="container">
+    <div id="content">
+      <app-list-detail
+        [lists]="lists"
+        [selectedList]="selectedList"
+        (editList)="openEditListForm()"
+        (deleteList)="openDeleteModal()"
+      ></app-list-detail>
+    </div>
+  </div>
+</div>
+
+<mat-menu #userMenu="matMenu">
+  <button *ngIf="user" mat-menu-item class="primary" disabled>
+    {{ user.nombre }} {{ user.apellido }}
+  </button>
+  <button mat-menu-item class="primary" (click)="logout()">
+    Salir
+  </button>
+</mat-menu>

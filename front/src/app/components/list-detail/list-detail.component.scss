@@ -1,0 +1,60 @@
+:host {
+  min-height: 130px;
+  margin: 0 auto;
+
+  .noList {
+    display: grid;
+    font-size: 1.5rem;
+    justify-content: center;
+    margin-top: 100px;
+    color: grey;
+    font-weight: 300;
+  }
+
+  .noTasks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      margin-top: 25px;
+      font-size: medium;
+      font-weight: 300;
+    }
+  }
+
+  .acciones {
+    position: absolute;
+    align-self: flex-end;
+    margin-top: -10px;
+  }
+
+  .mat-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-primary);
+    color: whitesmoke !important;
+    border-radius: 5px;
+    padding: 15px 20px 5px 20px;
+    margin: -40px 20px 15px 20px;
+    font-size: 1em;
+
+    span.title {
+      font-weight: 600;
+      font-size: medium;
+      margin-right: 10px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .z-depth-2 {
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+      0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  .z-depth-3 {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14),
+      0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+  }
+}
