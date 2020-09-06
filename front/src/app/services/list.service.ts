@@ -36,26 +36,3 @@ export class ListService {
     return this.http.put<List>(`${this.url}/${list.id}`, list);
   }
 }
-
-// public create(item: List): Observable<List> {
-//   return this.http.post<List>(this.url, item);
-// }
-
-// public getAll(params?: string): Observable<T[]> {
-//   if (!params) params = '';
-//   return this.http.get<T[]>(`${this.url}/${this.endpoint}${params}`);
-// }
-
-// public getOne(item: T | string): Observable<T> {
-//   let id = typeof item === 'string' ? item : item.id;
-//   return this.http.get<T>(`${this.url}/${this.endpoint}/${id}`);
-// }
-
-// public delete(item: T | string) {
-//   let id = typeof item === 'string' ? item : item.id;
-//   return this.http.delete(`${this.url}/${this.endpoint}/${id}`);
-// }
-
-// public update(item: T): Observable<T> {
-//   return this.http.put<T>(`${this.url}/${this.endpoint}/${item.id}`, item);
-// }
