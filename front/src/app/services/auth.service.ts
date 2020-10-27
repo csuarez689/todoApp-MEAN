@@ -14,7 +14,7 @@ export class AuthService {
   private headers = new HttpHeaders();
 
   constructor(private router: Router, private http: HttpClient) {
-    this.url = 'http://localhost:3000/api/users';
+    this.url = 'https://todo-app-mean-2020.herokuapp.com/api/users';
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
 

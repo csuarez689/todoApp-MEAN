@@ -10,7 +10,7 @@ export class ListService {
   private url: string;
 
   constructor(protected http: HttpClient) {
-    this.url = 'http://localhost:3000/api/listas';
+    this.url = 'https://todo-app-mean-2020.herokuapp.com/api/listas';
   }
 
   public create(list: List): Observable<List> {
